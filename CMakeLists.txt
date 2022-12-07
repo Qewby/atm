@@ -7,26 +7,32 @@ include(FetchContent)
 project(atm)
 set(EXE_NAME ${PROJECT_NAME})
 
+set(HEADER_FILES
+        src/CardNetwork.h
+        src/ATM.h
+        src/ICardValidator.h
+        src/LuhnValidator.h)
+
 set(SOURCE_FILES
         src/main.cpp
-        src/NumberDecoder.cpp
-        src/ENetwork.cpp
-        src/VisaNumberDecoderStrategy.cpp src/VisaNumberDecoderStrategy.h src/MastercardNumberDecoderStrategy.cpp src/MastercardNumberDecoderStrategy.h)
+        src/CardNetwork.cpp
+        src/ATM.cpp
+        src/LuhnValidator.cpp src/String.cpp src/String.h)
 
-add_executable(${EXE_NAME} ${SOURCE_FILES})
+add_executable(${EXE_NAME} ${SOURCE_FILES} ${HEADER_FILES})
 
-find_package(httplib)
-
-FetchContent_Declare(
-        httplib
-        GIT_REPOSITORY https://github.com/yhirose/cpp-httplib.git
-)
-
-FetchContent_Declare(
-        json
-        URL https://github.com/nlohmann/json/releases/download/v3.11.2/json.tar.xz
-)
-FetchContent_MakeAvailable(json)
+#find_package(httplib)
+#
+#FetchContent_Declare(
+#        httplib
+#        GIT_REPOSITORY https://github.com/yhirose/cpp-httplib.git
+#)
+#
+#FetchContent_Declare(
+#        json
+#        URL https://github.com/nlohmann/json/releases/download/v3.11.2/json.tar.xz
+#)
+#FetchContent_MakeAvailable(json)
 
 FetchContent_Declare(
         spdlog
@@ -41,7 +47,7 @@ if (NOT spdlog_POPULATED)
 endif ()
 
 target_link_libraries(${EXE_NAME} PRIVATE
-        httplib::httplib
-        nlohmann_json::nlohmann_json
+#        httplib::httplib
+#        nlohmann_json::nlohmann_json
         spdlog::spdlog
         )
