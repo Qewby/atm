@@ -8,16 +8,16 @@ project(atm)
 set(EXE_NAME ${PROJECT_NAME})
 
 set(HEADER_FILES
-        src/CardNetwork.h
-        src/ATM.h
-        src/ICardValidator.h
-        src/LuhnValidator.h)
+        src/server/CardNetwork.h
+        src/atm/ATM.h
+        src/server/ICardValidator.h
+        src/server/LuhnValidator.h src/server/IBankServer.h)
 
 set(SOURCE_FILES
         src/main.cpp
-        src/CardNetwork.cpp
-        src/ATM.cpp
-        src/LuhnValidator.cpp src/String.cpp src/String.h)
+        src/server/CardNetwork.cpp
+        src/atm/ATM.cpp
+        src/server/LuhnValidator.cpp src/utils/String.cpp src/utils/String.h src/server/IBankServer.h src/atm/CardReader.cpp src/atm/CardReader.h src/utils/ReadedCardInfo.cpp src/utils/ReadedCardInfo.h src/server/LocalServer.cpp src/server/LocalServer.h)
 
 add_executable(${EXE_NAME} ${SOURCE_FILES} ${HEADER_FILES})
 
