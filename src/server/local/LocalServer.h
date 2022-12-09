@@ -2,7 +2,8 @@
 
 #include <memory>
 
-#include "IBankServer.h"
+#include "server/IBankServer.h"
+#include "cards/ACard.h"
 
 class LocalServer : public IBankServer
 {
@@ -16,5 +17,5 @@ public:
 	virtual ~LocalServer() = default;
 
 private:
-	std::unique_ptr<ReadedCardInfo> _session_card;
+	std::unique_ptr<ACard> _session_card;
 };

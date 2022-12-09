@@ -2,8 +2,7 @@
 
 #include <memory>
 
-#include "../server/IBankServer.h"
-#include "../server/LocalServer.h"
+#include "server/local/LocalServer.h"
 
 class ATM
 {

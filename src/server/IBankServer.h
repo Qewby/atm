@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../utils/ReadedCardInfo.h"
+#include "utils/ReadedCardInfo.h"
 
 enum class ValidStatus
 {

@@ -2,8 +2,6 @@
 
 #include <iostream>
 
-#include "../server/CardNetwork.h"
-
 using namespace std;
 
 void ATM::run()

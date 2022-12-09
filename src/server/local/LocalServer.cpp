@@ -1,6 +1,7 @@
 #include "LocalServer.h"
 
 #include "CardNetwork.h"
+#include "cards/CardFactory.h"
 
 using namespace std;
 
@@ -28,7 +29,7 @@ bool LocalServer::authenticate(const ReadedCardInfo& card_info, const string& pi
 	}
 	if (pin == "1234")
 	{
-		_session_card = make_unique<ReadedCardInfo>(card_info);
+		_session_card = CardFactory::getCardFromReadedCardInfo(card_info);
 		return true;
 	}
 	return false;

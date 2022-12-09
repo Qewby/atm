@@ -8,16 +8,16 @@ project(atm)
 set(EXE_NAME ${PROJECT_NAME})
 
 set(HEADER_FILES
-        src/server/CardNetwork.h
+        src/server/local/CardNetwork.h
         src/atm/ATM.h
-        src/server/ICardValidator.h
-        src/server/LuhnValidator.h src/server/IBankServer.h)
+        src/server/local/ICardValidator.h
+        src/server/local/LuhnValidator.h src/server/IBankServer.h)
 
 set(SOURCE_FILES
         src/main.cpp
-        src/server/CardNetwork.cpp
+        src/server/local/CardNetwork.cpp
         src/atm/ATM.cpp
-        src/server/LuhnValidator.cpp src/utils/String.cpp src/utils/String.h src/server/IBankServer.h src/atm/CardReader.cpp src/atm/CardReader.h src/utils/ReadedCardInfo.cpp src/utils/ReadedCardInfo.h src/server/LocalServer.cpp src/server/LocalServer.h)
+        src/server/local/LuhnValidator.cpp src/utils/String.cpp src/utils/String.h src/server/IBankServer.h src/atm/CardReader.cpp src/atm/CardReader.h src/utils/ReadedCardInfo.cpp src/utils/ReadedCardInfo.h src/server/local/LocalServer.cpp src/server/local/LocalServer.h src/server/local/cards/ACard.cpp src/server/local/cards/ACard.h src/server/local/cards/CardFactory.cpp src/server/local/cards/CardFactory.h)
 
 add_executable(${EXE_NAME} ${SOURCE_FILES} ${HEADER_FILES})
 
@@ -45,6 +45,8 @@ if (NOT spdlog_POPULATED)
     FetchContent_Populate(spdlog)
     add_subdirectory(${spdlog_SOURCE_DIR} ${spdlog_BINARY_DIR})
 endif ()
+
+target_include_directories(${EXE_NAME} PRIVATE src)
 
 target_link_libraries(${EXE_NAME} PRIVATE
 #        httplib::httplib
