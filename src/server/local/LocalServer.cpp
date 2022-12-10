@@ -1,5 +1,7 @@
 #include "LocalServer.h"
 
+#include "spdlog/logger.h"
+
 #include "server/cards/CardNetwork.h"
 #include "server/cards/CardFactory.h"
 #include "server/services/ServiceFactory.h"
@@ -12,12 +14,19 @@ ValidStatus LocalServer::validate(const ReadedCardInfo& card_info)
 	CardNetwork net(card_num);
 	if (!net.compatible())
 	{
+		spdlog::info("Network not compatible");
 		return ValidStatus::NotCompatibleNetwork;
 	}
 	auto validator = net.getValidator();
 	if (!validator->validate(card_num))
 	{
+		spdlog::info("Invalid card number");
 		return ValidStatus::InvalidCardInfo;
+	}
+	if (!ServiceFactory::getCardService()->checkCardOurBank(card_info.getNumber()))
+	{
+		spdlog::info("Card not in our bank");
+		return ValidStatus::NotCompatibleNetwork;
 	}
 	return ValidStatus::Valid;
 }
