@@ -8,16 +8,16 @@ project(atm)
 set(EXE_NAME ${PROJECT_NAME})
 
 set(HEADER_FILES
-        src/server/local/CardNetwork.h
+        src/server/cards/CardNetwork.h
         src/atm/ATM.h
-        src/server/local/ICardValidator.h
-        src/server/local/LuhnValidator.h src/server/IBankServer.h)
+        src/server/cards/ICardValidator.h
+        src/server/cards/LuhnValidator.h src/server/IBankServer.h)
 
 set(SOURCE_FILES
         src/main.cpp
-        src/server/local/CardNetwork.cpp
+        src/server/cards/CardNetwork.cpp
         src/atm/ATM.cpp
-        src/server/local/LuhnValidator.cpp src/utils/String.cpp src/utils/String.h src/server/IBankServer.h src/atm/CardReader.cpp src/atm/CardReader.h src/utils/ReadedCardInfo.cpp src/utils/ReadedCardInfo.h src/server/local/LocalServer.cpp src/server/local/LocalServer.h src/server/local/cards/ACard.cpp src/server/local/cards/ACard.h src/server/local/cards/CardFactory.cpp src/server/local/cards/CardFactory.h)
+        src/server/cards/LuhnValidator.cpp src/utils/String.cpp src/utils/String.h src/server/IBankServer.h src/atm/CardReader.cpp src/atm/CardReader.h src/utils/ReadedCardInfo.cpp src/utils/ReadedCardInfo.h src/server/local/LocalServer.cpp src/server/local/LocalServer.h src/server/cards/ACard.cpp src/server/cards/ACard.h src/server/cards/CardFactory.cpp src/server/cards/CardFactory.h src/server/cards/ICard.h src/server/services/ICardService.h src/server/services/in-memory/InMemoryCardService.cpp src/server/services/IAccountService.h src/server/services/in-memory/InMemoryAccountService.cpp src/server/services/in-memory/InMemoryAccountService.h)
 
 add_executable(${EXE_NAME} ${SOURCE_FILES} ${HEADER_FILES})
 

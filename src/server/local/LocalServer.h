@@ -3,7 +3,7 @@
 #include <memory>
 
 #include "server/IBankServer.h"
-#include "cards/ACard.h"
+#include "server/cards/ACard.h"
 
 class LocalServer : public IBankServer
 {

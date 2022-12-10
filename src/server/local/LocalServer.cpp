@@ -1,7 +1,7 @@
 #include "LocalServer.h"
 
-#include "CardNetwork.h"
-#include "cards/CardFactory.h"
+#include "server/cards/CardNetwork.h"
+#include "server/cards/CardFactory.h"
 
 using namespace std;
 
