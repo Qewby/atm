@@ -2,6 +2,7 @@
 
 #include "server/cards/CardNetwork.h"
 #include "server/cards/CardFactory.h"
+#include "server/services/ServiceFactory.h"
 
 using namespace std;
 
@@ -27,7 +28,7 @@ bool LocalServer::authenticate(const ReadedCardInfo& card_info, const string& pi
 	{
 		return false;
 	}
-	if (pin == "1234")
+	if (ServiceFactory::getCardService()->getPinCodeByCard(card_info.getNumber()) == pin)
 	{
 		_session_card = CardFactory::getCardFromReadedCardInfo(card_info);
 		return true;
