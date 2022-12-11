@@ -15,4 +15,5 @@ std::unique_ptr<ICard> CardFactory::getCardFromReadedCardInfo(const ReadedCardIn
 	{
 		return make_unique<CreditCard>(info.getNumber());
 	}
+	return unique_ptr<ICard>();
 }

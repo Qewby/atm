@@ -22,6 +22,12 @@ public:
 
 	virtual bool changePinCode(const string& new_pin) = 0;
 
+	virtual bool canWithdraw(::uint64_t amount) = 0;
+
+	virtual ::uint64_t getWithdrawalFee(::uint64_t amount) = 0;
+
+	virtual bool withdraw(::uint64_t amount) = 0;
+
 	virtual void finishSession() = 0;
 
 	virtual ~IBankServer() = default;

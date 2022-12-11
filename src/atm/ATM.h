@@ -17,4 +17,5 @@ private:
 	std::unique_ptr<IBankServer> _server;
 
 	void changePin();
+	void withdraw();
 };

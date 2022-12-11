@@ -13,6 +13,14 @@ public:
 
 	string getNumber() override;
 
+	string getAccountNumber();
+
+	bool withdraw(const ::uint64_t amount) override;
+
+	bool canWithdraw(const ::uint64_t amount) override;
+
 private:
 	string _number;
+
+	virtual bool _withdraw(const ::uint64_t amount) = 0;
 };

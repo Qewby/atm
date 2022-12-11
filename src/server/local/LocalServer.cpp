@@ -73,4 +73,19 @@ bool LocalServer::_verifyPinCode(const string& card_num, const string& pin)
 	return ServiceFactory::getCardService()->getPinCodeByCard(card_num) == pin;
 }
 
+bool LocalServer::canWithdraw(::uint64_t amount)
+{
+	return _session_card->canWithdraw(amount);
+}
+
+uint64_t LocalServer::getWithdrawalFee(::uint64_t amount)
+{
+	return _session_card->getWithdrawalFee(amount);
+}
+
+bool LocalServer::withdraw(::uint64_t amount)
+{
+	return _session_card->withdraw(amount);
+}
+
 
