@@ -20,9 +20,7 @@ public:
 
 	virtual uint64_t getBalance() = 0;
 
-	virtual bool verifyPinCode(const string& pin) = 0;
-
-	virtual bool changePinCode(const string& old_pin, const string& pin) = 0;
+	virtual bool changePinCode(const string& new_pin) = 0;
 
 	virtual void finishSession() = 0;
 

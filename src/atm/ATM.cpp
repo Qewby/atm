@@ -72,10 +72,8 @@ void ATM::run()
 			{
 			}
 			else if (opt == '3')
-			{}
-			else if (opt == '3')
 			{
-
+				changePin();
 			}
 			else if (opt == '4')
 			{
@@ -87,5 +85,41 @@ void ATM::run()
 			}
 		}
 		_server->finishSession();
+	}
+}
+
+void ATM::changePin()
+{
+	cout << "Enter new PIN: ";
+	string pin;
+	for (int i = 0; i < 4; ++i)
+	{
+		char c;
+		cin >> c;
+		pin.append(1, c);
+	}
+	cout << "Enter new PIN again: ";
+	string copy_pin;
+	for (int i = 0; i < 4; ++i)
+	{
+		char c;
+		cin >> c;
+		copy_pin.append(1, c);
+	}
+	if (pin == copy_pin)
+	{
+		if (_server->changePinCode(pin))
+		{
+			cout << "Changed successfully" << endl;
+		}
+		else
+		{
+			cout << "Error occurred" << endl;
+		}
+	}
+	else
+	{
+		cout << "PIN not match" << endl;
+		return;
 	}
 }

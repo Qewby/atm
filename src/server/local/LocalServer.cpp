@@ -59,26 +59,13 @@ uint64_t LocalServer::getBalance()
 	return 10000;
 }
 
-bool LocalServer::verifyPinCode(const string& pin)
+bool LocalServer::changePinCode(const string& new_pin)
 {
 	if (!_session_card)
 	{
 		throw runtime_error("No session");
 	}
-	return _verifyPinCode(_session_card->getNumber(), pin);
-}
-
-bool LocalServer::changePinCode(const string& old_pin, const string& pin)
-{
-	if (!_session_card)
-	{
-		throw runtime_error("No session");
-	}
-	if (!verifyPinCode(old_pin))
-	{
-		return false;
-	}
-	return true;
+	return ServiceFactory::getCardService()->changePinCode(_session_card->getNumber(), new_pin);
 }
 
 bool LocalServer::_verifyPinCode(const string& card_num, const string& pin)

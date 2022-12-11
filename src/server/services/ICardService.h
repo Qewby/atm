@@ -12,5 +12,7 @@ public:
 
 	virtual bool checkCardOurBank(const string& card_num) = 0;
 
+	virtual bool changePinCode(const string& card_num, const string& pin) = 0;
+
 	virtual ~ICardService() = default;
 };

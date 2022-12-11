@@ -13,6 +13,8 @@ public:
 
 	bool checkCardOurBank(const string& card_num) override;
 
+	bool changePinCode(const string& card_num, const string& pin) override;
+
 private:
 	static map<string, map<string, string>> _card_database;
 };

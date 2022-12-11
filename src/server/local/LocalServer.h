@@ -12,9 +12,7 @@ public:
 
 	bool authenticate(const ReadedCardInfo& card_info, const std::string& pin) override;
 
-	bool changePinCode(const string& old_pin, const string& pin) override;
-
-	bool verifyPinCode(const string& pin) override;
+	bool changePinCode(const string& new_pin) override;
 
 	uint64_t getBalance() override;
 
