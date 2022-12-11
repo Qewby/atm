@@ -9,9 +9,13 @@ public:
 	{
 	}
 
+	uint64_t getWithdrawalFee(const ::uint64_t amount) override;
+
 	uint64_t getBalance() override;
 
-public:
-	~DebitCard() = default;
+	virtual  ~DebitCard() = default;
+
+private:
+	bool _withdraw(const ::uint64_t amount) override;
 
 };

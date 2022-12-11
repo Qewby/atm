@@ -23,6 +23,10 @@ public:
 
 	optional<::uint64_t> getUsedCreditLimitByCard(const string& card_num) override;
 
+	bool setCreditUsed(const string& card_num, const ::uint64_t amount) override;
+
+	bool increaseCreditUsed(const string& card_num, const ::uint64_t amount) override;
+
 	bool changePinCode(const string& card_num, const string& pin) override;
 
 private:

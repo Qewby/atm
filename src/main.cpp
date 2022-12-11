@@ -3,6 +3,9 @@
 
 //#include "NumberDecoder.h"
 
+#include "spdlog/spdlog.h"
+#include "spdlog/sinks/basic_file_sink.h"
+
 #include "atm/ATM.h"
 
 //using json = nlohmann::json;
@@ -25,6 +28,9 @@ int main()
 //	});
 //
 //	svr.listen("localhost", 8080);
+	//auto logger = spdlog::basic_logger_mt("test_logger", "logs/test.txt");
+	//spdlog::set_default_logger(logger);
+
 	ATM atm;
 	atm.run();
 	return 0;

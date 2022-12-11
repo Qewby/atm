@@ -88,3 +88,28 @@ optional<::uint64_t> InMemoryCardService::getRemainedCreditByCard(const string& 
 	}
 	return getCreditLimitByCard(card_num).value() - getUsedCreditLimitByCard(card_num).value();
 }
+
+bool InMemoryCardService::increaseCreditUsed(const string& card_num, const ::uint64_t amount)
+{
+	auto used_balance = getUsedCreditLimitByCard(card_num).value();
+	auto limit = getCreditLimitByCard(card_num).value();
+	used_balance += amount;
+	if (used_balance > limit)
+	{
+		return false;
+	}
+	else
+	{
+		return setCreditUsed(card_num, used_balance);
+	}
+}
+
+bool InMemoryCardService::setCreditUsed(const string& card_num, const ::uint64_t amount)
+{
+	if (!_card_database.count(card_num))
+	{
+		return false;
+	}
+	_card_database[card_num]["used"] = to_string(amount);
+	return true;
+}
