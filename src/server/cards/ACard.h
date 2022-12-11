@@ -5,5 +5,14 @@
 class ACard : ICard
 {
 public:
+	ACard(const string& number) : _number(number)
+	{
+	}
+
+	virtual ~ACard() = default;
+
+	string getNumber() override;
+
 private:
+	string _number;
 };

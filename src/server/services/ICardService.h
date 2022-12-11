@@ -11,4 +11,6 @@ public:
 	virtual optional<string> getPinCodeByCard(const string& card_num) = 0;
 
 	virtual bool checkCardOurBank(const string& card_num) = 0;
+
+	virtual ~ICardService() = default;
 };

@@ -37,7 +37,7 @@ bool LocalServer::authenticate(const ReadedCardInfo& card_info, const string& pi
 	{
 		return false;
 	}
-	if (ServiceFactory::getCardService()->getPinCodeByCard(card_info.getNumber()) == pin)
+	if (_verifyPinCode(card_info.getNumber(), pin))
 	{
 		_session_card = CardFactory::getCardFromReadedCardInfo(card_info);
 		return true;
@@ -52,7 +52,38 @@ void LocalServer::finishSession()
 
 uint64_t LocalServer::getBalance()
 {
+	if (!_session_card)
+	{
+		throw runtime_error("No session");
+	}
 	return 10000;
+}
+
+bool LocalServer::verifyPinCode(const string& pin)
+{
+	if (!_session_card)
+	{
+		throw runtime_error("No session");
+	}
+	return _verifyPinCode(_session_card->getNumber(), pin);
+}
+
+bool LocalServer::changePinCode(const string& old_pin, const string& pin)
+{
+	if (!_session_card)
+	{
+		throw runtime_error("No session");
+	}
+	if (!verifyPinCode(old_pin))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool LocalServer::_verifyPinCode(const string& card_num, const string& pin)
+{
+	return ServiceFactory::getCardService()->getPinCodeByCard(card_num) == pin;
 }
 
 

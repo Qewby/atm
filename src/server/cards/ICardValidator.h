@@ -12,6 +12,8 @@ class ICardValidator
 public:
 	bool validate(const std::string& number);
 
+	virtual ~ICardValidator() = default;
+
 private:
 	virtual bool _validate(const std::string&) = 0;
 };

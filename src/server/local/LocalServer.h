@@ -12,6 +12,10 @@ public:
 
 	bool authenticate(const ReadedCardInfo& card_info, const std::string& pin) override;
 
+	bool changePinCode(const string& old_pin, const string& pin) override;
+
+	bool verifyPinCode(const string& pin) override;
+
 	uint64_t getBalance() override;
 
 	void finishSession() override;
@@ -20,4 +24,6 @@ public:
 
 private:
 	std::unique_ptr<ACard> _session_card;
+
+	bool _verifyPinCode(const string& card_num, const string& pin);
 };
