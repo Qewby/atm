@@ -31,3 +31,60 @@ bool InMemoryCardService::changePinCode(const string& card_num, const string& pi
 	_card_database[card_num]["pin"] = pin;
 	return true;
 }
+
+optional<CardType> InMemoryCardService::getTypeByCard(const string& card_num)
+{
+	if (!_card_database.count(card_num))
+	{
+		return nullopt;
+	}
+	string type = _card_database[card_num]["type"];
+	if (type == "Debit")
+	{
+		return CardType::Debit;
+	}
+	else if (type == "Credit")
+	{
+		return CardType::Credit;
+	}
+	else
+	{
+		return nullopt;
+	}
+}
+
+optional<string> InMemoryCardService::getAccountByCard(const string& card_num)
+{
+	if (!_card_database.count(card_num))
+	{
+		return nullopt;
+	}
+	return card_num.substr(6);
+}
+
+optional<::uint64_t> InMemoryCardService::getCreditLimitByCard(const string& card_num)
+{
+	if (!_card_database.count(card_num))
+	{
+		return nullopt;
+	}
+	return stoul(_card_database[card_num]["limit"]);
+}
+
+optional<::uint64_t> InMemoryCardService::getUsedCreditLimitByCard(const string& card_num)
+{
+	if (!_card_database.count(card_num))
+	{
+		return nullopt;
+	}
+	return stoul(_card_database[card_num]["used"]);
+}
+
+optional<::uint64_t> InMemoryCardService::getRemainedCreditByCard(const string& card_num)
+{
+	if (!_card_database.count(card_num))
+	{
+		return nullopt;
+	}
+	return getCreditLimitByCard(card_num).value() - getUsedCreditLimitByCard(card_num).value();
+}

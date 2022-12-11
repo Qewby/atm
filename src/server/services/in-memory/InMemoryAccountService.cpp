@@ -6,7 +6,11 @@ map<string, map<string, string>> InMemoryAccountService::_account_database = {
 		{ "5105105100", {{ "balance", "100000"}}}
 };
 
-optional<string> InMemoryAccountService::getBalanceByAccount(const string& acc_num)
+optional<::uint64_t> InMemoryAccountService::getBalanceByAccount(const string& acc_num)
 {
-	return optional<string>();
+	if (!_account_database.count(acc_num))
+	{
+		return nullopt;
+	}
+	return stoul(_account_database[acc_num]["balance"]);
 }
