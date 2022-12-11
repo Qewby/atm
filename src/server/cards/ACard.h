@@ -2,7 +2,7 @@
 
 #include "ICard.h"
 
-class ACard : ICard
+class ACard : public ICard
 {
 public:
 	ACard(const string& number) : _number(number)

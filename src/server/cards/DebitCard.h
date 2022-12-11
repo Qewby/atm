@@ -9,6 +9,9 @@ public:
 	{
 	}
 
+	uint64_t getBalance() override;
+
+public:
 	~DebitCard() = default;
 
 };

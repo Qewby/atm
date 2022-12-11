@@ -20,7 +20,7 @@ set(SOURCE_FILES
         src/main.cpp
         src/server/cards/CardNetwork.cpp
         src/atm/ATM.cpp
-        src/server/cards/LuhnValidator.cpp src/utils/String.cpp src/utils/String.h src/server/IBankServer.h src/atm/CardReader.cpp src/atm/CardReader.h src/utils/ReadedCardInfo.cpp src/utils/ReadedCardInfo.h src/server/local/LocalServer.cpp src/server/local/LocalServer.h src/server/cards/ACard.cpp src/server/cards/ACard.h src/server/cards/CardFactory.cpp src/server/cards/CardFactory.h src/server/cards/ICard.h src/server/services/ICardService.h src/server/services/in-memory/InMemoryCardService.cpp src/server/services/IAccountService.h src/server/services/in-memory/InMemoryAccountService.cpp src/server/services/in-memory/InMemoryAccountService.h src/server/services/ServiceFactory.cpp src/server/services/ServiceFactory.h src/server/cards/DebitCard.cpp src/server/cards/DebitCard.h)
+        src/server/cards/LuhnValidator.cpp src/utils/String.cpp src/utils/String.h src/server/IBankServer.h src/atm/CardReader.cpp src/atm/CardReader.h src/utils/ReadedCardInfo.cpp src/utils/ReadedCardInfo.h src/server/local/LocalServer.cpp src/server/local/LocalServer.h src/server/cards/ACard.cpp src/server/cards/ACard.h src/server/cards/CardFactory.cpp src/server/cards/CardFactory.h src/server/cards/ICard.h src/server/services/ICardService.h src/server/services/in-memory/InMemoryCardService.cpp src/server/services/IAccountService.h src/server/services/in-memory/InMemoryAccountService.cpp src/server/services/in-memory/InMemoryAccountService.h src/server/services/ServiceFactory.cpp src/server/services/ServiceFactory.h src/server/cards/DebitCard.cpp src/server/cards/DebitCard.h src/server/cards/CreditCard.cpp src/server/cards/CreditCard.h)
 
 
 

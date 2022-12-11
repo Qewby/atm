@@ -8,5 +8,5 @@
 class CardFactory
 {
 public:
-	static std::unique_ptr<ACard> getCardFromReadedCardInfo(const ReadedCardInfo& info);
+	static std::unique_ptr<ICard> getCardFromReadedCardInfo(const ReadedCardInfo& info);
 };

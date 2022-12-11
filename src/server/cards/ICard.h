@@ -10,4 +10,6 @@ public:
 	virtual ~ICard() = default;
 
 	virtual string getNumber() = 0;
+
+	virtual ::uint64_t getBalance() = 0;
 };

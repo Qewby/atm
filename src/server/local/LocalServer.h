@@ -21,7 +21,7 @@ public:
 	virtual ~LocalServer() = default;
 
 private:
-	std::unique_ptr<ACard> _session_card;
+	std::unique_ptr<ICard> _session_card;
 
 	bool _verifyPinCode(const string& card_num, const string& pin);
 };

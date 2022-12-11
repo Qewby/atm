@@ -56,7 +56,7 @@ uint64_t LocalServer::getBalance()
 	{
 		throw runtime_error("No session");
 	}
-	return 10000;
+	return _session_card->getBalance();
 }
 
 bool LocalServer::changePinCode(const string& new_pin)
