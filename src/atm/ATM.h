@@ -1,8 +1,8 @@
 #pragma once
 
 #include <memory>
-
 #include "server/local/LocalServer.h"
+
 
 class ATM
 {
