@@ -16,6 +16,8 @@ public:
 
 	virtual bool authenticate(const ReadedCardInfo& card_info, const std::string& pin) = 0;
 
+	virtual uint64_t getBalance() = 0;
+
 	virtual void finishSession() = 0;
 
 	virtual ~IBankServer() = default;

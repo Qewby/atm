@@ -50,4 +50,9 @@ void LocalServer::finishSession()
 	_session_card.release();
 }
 
+uint64_t LocalServer::getBalance()
+{
+	return 10000;
+}
+
 

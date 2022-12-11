@@ -12,6 +12,8 @@ public:
 
 	bool authenticate(const ReadedCardInfo& card_info, const std::string& pin) override;
 
+	uint64_t getBalance() override;
+
 	void finishSession() override;
 
 	virtual ~LocalServer() = default;

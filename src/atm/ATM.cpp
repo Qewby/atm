@@ -47,8 +47,43 @@ void ATM::run()
 		else
 		{
 			cout << "You card is blocked" << endl;
+			continue;
 		}
 
+		bool end_session = false;
+		while (!end_session)
+		{
+			cout << "Options: " << endl;
+			cout << "1. Get balance" << endl;
+			cout << "2. Withdraw money" << endl;
+			cout << "3. Change PIN" << endl;
+			cout << "4. End session" << endl;
+			cout << "Enter option number: " << endl;
+			char opt;
+			cin >> opt;
+			if (opt == '1')
+			{
+				uint64_t balance = _server->getBalance();
+				uint64_t integer = balance / 100;
+				unsigned int fract = balance % 100;
+				cout << "Balance: " << integer << '.' << fract << endl;
+			}
+			else if (opt == '2')
+			{
+			}
+			else if (opt == '3')
+			{}
+			else if (opt == '3')
+			{}
+			else if (opt == '4')
+			{
+				end_session = true;
+			}
+			else
+			{
+				cout << "Invalid option. Try again" << endl;
+			}
+		}
 		_server->finishSession();
 	}
 }
