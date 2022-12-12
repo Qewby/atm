@@ -15,5 +15,5 @@ uint64_t DebitCard::getWithdrawalFee(const ::uint64_t amount)
 
 bool DebitCard::_withdraw(const ::uint64_t amount)
 {
-	return ServiceFactory::getAccountService()->transferMoneyFromTo(this->getAccountNumber(), "0", amount);
+    return ServiceFactory::getAccountService()->transferMoneyFromTo(ServiceFactory::getCardService()->getAccountByCard(this->getNumber()).value(), "0", amount);
 }

@@ -12,7 +12,7 @@ bool ACard::canWithdraw(const ::uint64_t amount)
 
 string ACard::getAccountNumber()
 {
-	return _number.substr(6);
+    return _number.substr(6);
 }
 
 bool ACard::withdraw(const ::uint64_t amount)

@@ -1,7 +1,7 @@
 #include "InMemoryAccountService.h"
 
 map<string, map<string, string>> InMemoryAccountService::_account_database = {
-		{ "0",          {{ "balance", "102937102731029" }}},
+        { "0",          {{ "balance", "483647" }}},
 		{ "1111111111", {{ "balance", "123400" }}},
 		{ "5105105100", {{ "balance", "100000" }}}
 };

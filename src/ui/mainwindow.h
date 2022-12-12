@@ -2,16 +2,17 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <server/cards/ACard.h>
+#include <server/local/LocalServer.h>
+#include <utils/ReadedCardInfo.h>
 enum State{
         TURNED_OFF,
         WAITING_FOR_CARD,
         WAITING_FOR_PIN,
         CARD_BLOCKED,
         CHOOSING_ACTION,
-        CHOOSING_MONEY_FOR_WITHDRAWING,
-        WAITING_FOR_CARD_TO_TRANSFER_TO,
-        WAITING_FOR_MONEY_TO_TOP_UP,
+        ENTERING_AMOUNT_TO_WITHDRAW,
+        ASKING_FOR_MORE_ACTIONS,
+        ASKING_TO_CONFIRM_WITHDRAW,
         WAITING_FOR_NEW_PIN,
 };
 
@@ -33,8 +34,10 @@ private slots:
 
     void on_pushButton_InsertCard_clicked();
 
+    void digitButtonClickedAny(std::string digit);
+
     void on_pushButton_1_clicked();
-    void on_digitButton_clicked(std::string);
+
     void on_pushButton_2_clicked();
 
     void on_pushButton_3_clicked();
@@ -61,13 +64,15 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    State currentState;
-    ACard currentCard;
-    ACard cardForTransfer;
+    State currentState = TURNED_OFF;
+    ReadedCardInfo currentCard;
+    double amountToWithdraw;
     std::string pin;
-
+    size_t incorrectTries;
+    LocalServer server;
 
     QString showEnterCardDialog();
+    double showMoneyAmountDialog(QString msg, double min, double max);
 };
 
 #endif // MAINWINDOW_H

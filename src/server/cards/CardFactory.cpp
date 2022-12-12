@@ -6,14 +6,13 @@
 
 std::unique_ptr<ICard> CardFactory::getCardFromReadedCardInfo(const ReadedCardInfo& info)
 {
-	auto type = ServiceFactory::getCardService()->getTypeByCard(info.getNumber());
-	if (type == CardType::Debit)
-	{
-		return make_unique<DebitCard>(info.getNumber());
-	}
-	else if (type == CardType::Credit)
-	{
-		return make_unique<CreditCard>(info.getNumber());
-	}
-	return unique_ptr<ICard>();
+    auto type = ServiceFactory::getCardService()->getTypeByCard(info.getNumber());
+    if (type == CardType::Debit)
+    {
+        return make_unique<DebitCard>(info.getNumber());
+    }
+    else if (type == CardType::Credit)
+    {
+        return make_unique<CreditCard>(info.getNumber());
+    }
 }

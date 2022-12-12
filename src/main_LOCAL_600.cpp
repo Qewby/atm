@@ -8,14 +8,10 @@
 
 #include "atm/ATM.h"
 
-#include <QApplication>
-
-#include <ui/mainwindow.h>
-
 //using json = nlohmann::json;
 //using namespace httplib;
 
-int main(int argc, char *argv[])
+int main()
 {
 //	Server svr;
 //	if (!svr.is_valid())
@@ -35,13 +31,7 @@ int main(int argc, char *argv[])
 	//auto logger = spdlog::basic_logger_mt("test_logger", "logs/test.txt");
 	//spdlog::set_default_logger(logger);
 
-    /*
-    ATM atm;
-    atm.run();
-    return 0;*/
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
-    return a.exec();
-
+	ATM atm;
+	atm.run();
+	return 0;
 }
