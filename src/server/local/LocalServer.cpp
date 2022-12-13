@@ -65,6 +65,10 @@ bool LocalServer::changePinCode(const string& new_pin)
 	{
 		throw runtime_error("No session");
 	}
+	if (!allDigits(new_pin) || new_pin.length() != 4)
+	{
+		return false;
+	}
 	return ServiceFactory::getCardService()->changePinCode(_session_card->getNumber(), new_pin);
 }
 
