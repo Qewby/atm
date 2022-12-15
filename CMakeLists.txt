@@ -26,7 +26,6 @@ set(SOURCE_FILES
         src/server/cards/DebitCard.cpp src/server/cards/DebitCard.h src/server/cards/CreditCard.cpp src/server/cards/CreditCard.h )
 
 
-
 find_package(Qt5 COMPONENTS Core Widgets REQUIRED )
 
 add_executable(${EXE_NAME}
@@ -39,18 +38,6 @@ set_target_properties(${EXE_NAME} PROPERTIES
     WIN32_EXECUTABLE ON
     MACOSX_BUNDLE ON
 )
-#find_package(httplib)
-#
-#FetchContent_Declare(
-#        httplib
-#        GIT_REPOSITORY https://github.com/yhirose/cpp-httplib.git
-#)
-#
-#FetchContent_Declare(
-#        json
-#        URL https://github.com/nlohmann/json/releases/download/v3.11.2/json.tar.xz
-#)
-#FetchContent_MakeAvailable(json)
 
 FetchContent_Declare(
         spdlog
@@ -64,9 +51,15 @@ if (NOT spdlog_POPULATED)
     add_subdirectory(${spdlog_SOURCE_DIR} ${spdlog_BINARY_DIR})
 endif ()
 
+FetchContent_Declare(
+        SQLiteCpp
+        URL https://github.com/SRombauts/SQLiteCpp/archive/3.2.1.zip
+)
+FetchContent_MakeAvailable(SQLiteCpp)
+
 target_include_directories(${EXE_NAME} PRIVATE src)
 
 target_link_libraries(${EXE_NAME} PRIVATE
-#        httplib::httplib
-#        nlohmann_json::nlohmann_json
-        spdlog::spdlog)
+        spdlog::spdlog
+        SQLiteCpp
+        )
